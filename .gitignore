@@ -1,0 +1,28 @@
+# Build outputs and Release attachments
+/build/master-build/
+/build/staging/
+/release/
+*.ipk
+node_modules/
+
+# Local diagnostics, device backups and credentials
+/.local/
+/device-backups/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.bak*
+
+# Python, editors and operating system
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local task tooling
+/.superpowers/

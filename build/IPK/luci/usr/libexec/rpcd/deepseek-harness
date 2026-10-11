@@ -1,0 +1,9 @@
+#!/bin/sh
+case "$1" in
+	list) printf '%s\n' '{"login":{}}' ;;
+	call)
+		[ "$2" = login ] || exit 1
+		exec /usr/lib/deepseek-harness/bin/node /usr/libexec/deepseek-harness-login.mjs
+		;;
+	*) exit 1 ;;
+esac

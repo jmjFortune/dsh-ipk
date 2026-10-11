@@ -1,0 +1,8 @@
+{
+  "admin/services/deepseek-harness": {
+    "title": "DeepSeek Harness",
+    "order": 90,
+    "action": { "type": "view", "path": "deepseek-harness/config" },
+    "depends": { "acl": ["luci-app-deepseek-harness"], "uci": { "deepseek-harness": true } }
+  }
+}

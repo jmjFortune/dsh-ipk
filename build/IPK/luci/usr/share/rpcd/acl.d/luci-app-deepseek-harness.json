@@ -1,0 +1,13 @@
+{
+  "luci-app-deepseek-harness": {
+    "description": "Configure DeepSeek Harness and view service status",
+    "read": {
+      "uci": ["deepseek-harness"],
+      "ubus": { "service": ["list"] }
+    },
+    "write": {
+      "uci": ["deepseek-harness"],
+      "ubus": { "deepseek-harness": ["login"] }
+    }
+  }
+}

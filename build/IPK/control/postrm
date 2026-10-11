@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+[ "$1" = remove ] || exit 0
+# Only the fixed application prefix is removed; UCI and external user data remain.
+rm -rf /usr/lib/deepseek-harness

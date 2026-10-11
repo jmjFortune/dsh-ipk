@@ -1,0 +1,454 @@
+/* Antigravity Clean Light Theme for DeepSeek Harness on iStoreOS */
+.dsh-settings {
+  --dsh-primary: #4f46e5;
+  --dsh-primary-hover: #4338ca;
+  --dsh-primary-glow: rgba(79, 70, 229, 0.18);
+  --dsh-card-bg: #ffffff;
+  --dsh-card-border: rgba(226, 232, 240, 0.9);
+  --dsh-card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --dsh-text-title: #0f172a;
+  --dsh-text-body: #334155;
+  --dsh-text-muted: #64748b;
+  --dsh-input-border: #cbd5e1;
+  --dsh-input-focus: #4f46e5;
+  --dsh-tag-bg: #eef2ff;
+  --dsh-tag-text: #4338ca;
+  --dsh-tag-border: #c7d2fe;
+
+  max-width: 960px;
+  margin: 16px auto 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--dsh-text-body);
+}
+
+/* 1. Hero 看板卡片 */
+.dsh-settings .dsh-hero-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(238, 242, 255, 0.7) 0%, #ffffff 100%);
+  border: 1px solid rgba(199, 210, 254, 0.7);
+  border-radius: 16px;
+  box-shadow: var(--dsh-card-shadow);
+  transition: all 0.2s ease;
+}
+
+.dsh-settings .dsh-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.dsh-settings .dsh-hero-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px var(--dsh-primary-glow);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.dsh-settings .dsh-whale-img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.dsh-settings .dsh-hero-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.dsh-settings .dsh-hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dsh-settings .dsh-title {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--dsh-text-title);
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.dsh-settings .dsh-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dsh-settings .dsh-status-badge[data-running="false"] {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.dsh-settings .dsh-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+}
+
+.dsh-settings .dsh-status-badge[data-running="false"] .dsh-status-dot {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
+}
+
+.dsh-settings .dsh-subtitle {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: var(--dsh-text-muted);
+}
+
+/* 快捷打开操作 */
+.dsh-settings .dsh-hero-actions {
+  flex-shrink: 0;
+}
+
+.dsh-settings .dsh-open-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 22px !important;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--dsh-primary-glow) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.dsh-settings .dsh-open-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3) !important;
+}
+
+.dsh-settings .dsh-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+.dsh-settings .dsh-open-btn:hover .dsh-arrow {
+  transform: translateX(2px);
+}
+
+.dsh-settings .dsh-listen-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #b45309;
+  background: #fffbeb;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #fde68a;
+}
+
+/* 2. 重置 CBI 容器，消除双层卡片/嵌套边框 */
+.dsh-settings .cbi-map {
+  margin: 0;
+}
+
+.dsh-settings .cbi-section {
+  margin: 0 0 20px 0 !important;
+  padding: 20px 26px !important;
+  background: var(--dsh-card-bg) !important;
+  border: 1px solid var(--dsh-card-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--dsh-card-shadow) !important;
+}
+
+.dsh-settings .cbi-section > h3 {
+  margin: 0 0 16px 0 !important;
+  padding: 0 0 8px 0 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  color: #475569 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.dsh-settings .cbi-section > h3::before {
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: var(--dsh-primary);
+  border-radius: 2px;
+}
+
+/* 抹除 Argon 内层 .cbi-section-node 的卡片样式 */
+.dsh-settings .cbi-section-node {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* 表单行排列 */
+.dsh-settings .cbi-value {
+  padding: 12px 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6) !important;
+  box-shadow: none !important;
+}
+
+.dsh-settings .cbi-value:last-child {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.dsh-settings .cbi-value-title {
+  float: none !important;
+  flex: 0 0 160px;
+  width: 160px;
+  padding: 12px 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dsh-text-title);
+  line-height: 1.4;
+}
+
+.dsh-settings .cbi-value-field {
+  flex: 1;
+  min-width: 0;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 输入控件统一 Antigravity 纯净圆角风格 */
+.dsh-settings .cbi-value-field input[type="text"],
+.dsh-settings .cbi-value-field input[type="number"],
+.dsh-settings .cbi-value-field select,
+.dsh-settings .cbi-value-field .cbi-dropdown {
+  width: 100% !important;
+  max-width: 580px !important;
+  margin: 0 !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  background: #ffffff !important;
+  border: 1px solid var(--dsh-input-border) !important;
+  border-radius: 8px !important;
+  color: var(--dsh-text-body) !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+  transition: all 0.15s ease !important;
+}
+
+.dsh-settings .cbi-value-field input[type="text"]:focus,
+.dsh-settings .cbi-value-field input[type="number"]:focus,
+.dsh-settings .cbi-value-field select:focus {
+  border-color: var(--dsh-input-focus) !important;
+  box-shadow: 0 0 0 3px var(--dsh-primary-glow) !important;
+  outline: none !important;
+}
+
+/* 抹除任何描述小字 */
+.dsh-settings .cbi-value-description {
+  display: none !important;
+}
+
+/* DynamicList uses span values and a pseudo-element remove control. */
+.dsh-settings .cbi-value-field .cbi-dynlist {
+  display: flex !important;
+  flex-direction: column;
+  width: 100% !important;
+  max-width: 580px !important;
+}
+.dsh-settings .cbi-dynlist > .item {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 44px;
+  height: 44px !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  border: 1px solid var(--dsh-input-border) !important;
+  border-radius: 8px !important;
+  background: var(--dsh-card-bg) !important;
+  box-sizing: border-box;
+}
+.dsh-settings .cbi-dynlist > .item > span {
+  display: block !important;
+  flex: 1;
+  min-width: 0;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 10px 12px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.dsh-settings .cbi-dynlist > .item::after {
+  position: static !important;
+  display: flex !important;
+  flex: 0 0 43px;
+  align-items: center;
+  justify-content: center;
+  width: 43px !important;
+  height: 42px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-left: 1px solid var(--dsh-input-border);
+  border-radius: 0 7px 7px 0 !important;
+  color: #dc2626;
+  background: #fff1f2 !important;
+  box-sizing: border-box;
+}
+.dsh-settings .cbi-dynlist > .add-item {
+  display: flex !important;
+  align-items: stretch;
+  width: 100% !important;
+  height: 44px;
+  gap: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.dsh-settings .cbi-dynlist > .add-item > input {
+  flex: 1;
+  min-width: 0;
+  width: 0 !important;
+  max-width: none !important;
+  border-radius: 8px 0 0 8px !important;
+  border-right: 0 !important;
+  margin: 0 !important;
+}
+.dsh-settings .cbi-dynlist > .add-item > .cbi-button {
+  display: flex !important;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  box-sizing: border-box;
+}
+.dsh-settings .cbi-value[data-widget="CBI.Flag"] { align-items: center; }
+.dsh-settings .cbi-value[data-widget="CBI.Flag"] .cbi-value-title { padding: 0 !important; }
+.dsh-settings .cbi-value[data-widget="CBI.Flag"] .cbi-value-field { display: flex; align-items: center; min-height: 44px; }
+
+/* 移动端响应式 */
+@media (max-width: 700px) {
+  .dsh-settings {
+    margin-top: 8px;
+    padding: 0 4px;
+  }
+  .dsh-settings .dsh-hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 18px;
+    gap: 14px;
+  }
+  .dsh-settings .dsh-hero-actions,
+  .dsh-settings .dsh-open-btn {
+    width: 100% !important;
+    justify-content: center;
+  }
+  .dsh-settings .cbi-section {
+    padding: 14px 16px !important;
+    margin-bottom: 16px !important;
+  }
+  .dsh-settings .cbi-value {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    padding: 12px 0 !important;
+  }
+  .dsh-settings .cbi-value-title {
+    flex: none !important;
+    flex-basis: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+  .dsh-settings .cbi-value-field {
+    flex: none !important;
+    flex-basis: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  /* 针对勾选框（Flag）在移动端保持水平一行排布 */
+  .dsh-settings .cbi-value:has(input[type="checkbox"]),
+  .dsh-settings .cbi-value:has(.cbi-input-checkbox) {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .dsh-settings .cbi-value:has(input[type="checkbox"]) .cbi-value-title,
+  .dsh-settings .cbi-value:has(.cbi-input-checkbox) .cbi-value-title {
+    width: auto !important;
+    margin: 0 !important;
+  }
+  .dsh-settings .cbi-value:has(input[type="checkbox"]) .cbi-value-field,
+  .dsh-settings .cbi-value:has(.cbi-input-checkbox) .cbi-value-field {
+    width: auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+  .dsh-settings .cbi-value-field input[type="text"],
+  .dsh-settings .cbi-value-field input[type="number"],
+  .dsh-settings .cbi-value-field select,
+  .dsh-settings .cbi-value-field .cbi-dynlist,
+  .dsh-settings .cbi-dynlist > .item {
+    max-width: 100% !important;
+  }
+}
+

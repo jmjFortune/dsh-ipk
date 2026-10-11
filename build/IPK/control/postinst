@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+# Expand the verified runtime after opkg has installed the small adapter file list.
+# The service is stopped by prerm during upgrades; persistent data is elsewhere.
+unpack_dir=$(mktemp -d /usr/lib/deepseek-harness/.unpack.XXXXXX)
+trap 'rm -rf "$unpack_dir"' EXIT
+tar -xzf /usr/lib/deepseek-harness/payload.tar.gz -C "$unpack_dir"
+test -x "$unpack_dir/runtime/bin/node"
+test -f "$unpack_dir/app/node_modules/@deepseek-ai/dsh/lib/bin.js"
+# Replace complete application trees so upgrades cannot retain obsolete modules.
+rm -rf /usr/lib/deepseek-harness/app /usr/lib/deepseek-harness/runtime /usr/lib/deepseek-harness/licenses
+mv "$unpack_dir/app" "$unpack_dir/runtime" "$unpack_dir/licenses" /usr/lib/deepseek-harness/
+cp "$unpack_dir/build-info.json" /usr/lib/deepseek-harness/build-info.json
+. /lib/functions.sh
+group_id=$(group_add_next deepseek-harness)
+if ! user_exists deepseek-harness; then
+	user_add deepseek-harness "" "$group_id" "DeepSeek Harness" /var/empty /bin/bash
+fi
+/etc/init.d/deepseek-harness enable
+# Register UCI reload triggers even when disabled; start_service then creates
+# no process until the user enables it in LuCI.
+/etc/init.d/deepseek-harness start
+echo 'DeepSeek Harness 已安装。请到 服务 → DeepSeek Harness 配置数据目录后启用。'

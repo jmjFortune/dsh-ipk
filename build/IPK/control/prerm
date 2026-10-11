@@ -1,0 +1,6 @@
+#!/bin/sh
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+/etc/init.d/deepseek-harness stop
+/etc/init.d/deepseek-harness disable
+# Sessions, credentials and user files are outside the package and are retained.
+exit 0

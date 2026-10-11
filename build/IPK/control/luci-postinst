@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+# IPK archives use reproducible zero mtimes; invalidate browser conditional caches.
+touch /www/luci-static/resources/view/deepseek-harness/config.js \
+    /www/luci-static/resources/view/deepseek-harness/config.css
+# Preserve login sessions while reloading ACLs from the newly installed app.
+/etc/init.d/rpcd reload

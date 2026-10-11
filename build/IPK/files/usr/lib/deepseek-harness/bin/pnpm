@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/lib/deepseek-harness/bin/node /usr/lib/deepseek-harness/app/node_modules/pnpm/bin/pnpm.cjs "$@"

@@ -1,0 +1,10 @@
+{
+  "dsh_version": "0.2.0-rc.2",
+  "pnpm_version": "10.32.1",
+  "package_release": 2,
+  "image": "node:24-alpine3.22@sha256:191c9f0080fcbbc6547a85dc0ff7988072214a355aabdc1d2ec55a7dae5eea8a",
+  "architectures": {
+    "x86_64": { "platform": "linux/amd64", "node_arch": "x64", "loader": "ld-musl-x86_64.so.1" },
+    "aarch64_generic": { "platform": "linux/arm64", "node_arch": "arm64", "loader": "ld-musl-aarch64.so.1" }
+  }
+}

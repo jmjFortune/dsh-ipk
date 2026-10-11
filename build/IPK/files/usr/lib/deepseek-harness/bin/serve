@@ -1,0 +1,24 @@
+#!/bin/sh
+set -eu
+
+data_dir=$1
+port=$2
+heap_mb=$3
+proxy=$4
+shift 4
+umask 077
+export HOME="$data_dir" DSH_HOME="$data_dir/.dsh" TMPDIR="$data_dir/tmp"
+export DSH_WEB_PORT="$port"
+export XDG_CACHE_HOME="$data_dir/.cache" SHELL=/bin/bash
+export PATH="/usr/lib/deepseek-harness/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+if [ -n "$proxy" ]; then
+	export HTTP_PROXY="$proxy" HTTPS_PROXY="$proxy" ALL_PROXY="$proxy"
+	export NO_PROXY="localhost,127.0.0.1,::1"
+fi
+cd "$data_dir"
+set -- /usr/lib/deepseek-harness/app/node_modules/@deepseek-ai/dsh/lib/bin.js \
+	--profile web --patch "$data_dir/web.patch.json" \
+	--host 127.0.0.1 --port "$port" --no-open ${1:+--trusted-host} "$@"
+exec /usr/lib/deepseek-harness/bin/node --expose-internals --max-old-space-size="$heap_mb" \
+	--import /usr/lib/deepseek-harness/capture-login.mjs "$@"
